@@ -30,6 +30,7 @@ After the game ends, the score appears on the display and restart game.
 ![diagram](https://github.com/user-attachments/assets/3b744290-be17-4490-9f75-1a62e9d0fc9f)
 
 # Software Design
+For this project, I am using PlatformIO as the development environment.
 # Results
 # Conclusions
 
