@@ -22,12 +22,22 @@ After the game ends, the score appears on the display and restart game.
 
 # Hardware Design
 #### Component List :
-- LCD
-- Joystick
-- Arduino UNO
+- LCD display  84x48
+- Push Buttons x3
+- Arduino Uno R3 board
 - Connecting wires
-#### Circuit Diagram:
-![diagram](https://github.com/user-attachments/assets/3b744290-be17-4490-9f75-1a62e9d0fc9f)
+- Breadboard
+
+# Diagrams:
+<div align="center">
+   
+#### Display Circuit Diagram:
+![image](https://github.com/user-attachments/assets/d468001a-17dd-4d1b-800b-2a2ddbc86475)
+
+#### Push Buttons Diagram:
+![image](https://github.com/user-attachments/assets/bf53dee7-f416-41e7-ba40-1d3f7deae4dd)
+
+</div>
 
 # Software Design
 For this project, I am using PlatformIO as the development environment.
