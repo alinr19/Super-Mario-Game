@@ -72,7 +72,36 @@ To run mario back ward place in pin 5 with button 1 , to jump/select or enter th
 
 
 # Software Design
+#### Implementation:
 For this project, I am using PlatformIO as the development environment.
+Once the game starts by pressing the "Start" button, Mario is controlled by the "Left" and "Right" buttons to move throughout the game, but also the "Jump" button that helps the game character jump to pass over obstacles. The central button in the menu is programmed for "Start", and during the game for "Jump".
+
+#### Project Libraries:
+The external libraries are:
+- SPI.h (Provides support for the Serial Peripheral Interface (SPI) protocol, required for communication with peripheral devices)
+- Adafruit_GFX.h (It provides a series of functions for drawing graphics (lines, shapes, texts) on screens that use different types of graphic displays)
+- Adafruit_PCD8544.h (Provides support for controlling the Nokia 5110 PCD8544 LCD screen. This is a specialized library that allows the use of an LCD screen on Arduino platforms)
+The internal libraries are:
+-marduinotypes.h (A custom file that defines project-specific data types and structures, for example, BMP (the data type for bitmap tiles) and coordinate-related structures and map arrays)
+The marduinotypes.h file contains:
+-tilesetbitmap.h (In this file, several bitmap arrays are declared and initialized, which visually represent the tiles used for various visual elements in the game (for example, one image for each tile))
+-tilemap.h (Here the TileMap class is defined, which contains functions for manipulating the map and tile sizes, and within this class are functionalities to calculate the positions of each tile and to actually draw the tiles on the screen)
+-tilemap.cpp (This file implements the methods that allow setting the map dimensions, drawing tiles on the screen (interaction with Adafruit_PCD8544 to draw each tile))
+-levels.h (This file defines various data sets that describe maps and collision maps (CollisionMap). The map is structured by a set of tiles, and the TileMap0[] function effectively represents the tiles that make up the map of a particular level in the game)
+
+#### Functionalities from labs to game :
+- Lab 0: GPIO for detecting button inputs (The buttons in the game are read as digital inputs from configurable pins. I used the digitalRead() function to detect the state of the buttons and use them as input for various in-game actions (movement, jump))
+- Lab 2: Interrupts , Timers ( Here, we have used interrupts to respond to a fast event (button press). When we press the button, instead of waiting continuously to check, the processor goes into interrupt mode and fires the onButtonPress() function. This saves processor resources)
+-  Lab 5: SPI (Here we used SPI to communicate with an RFID reader, which can be used to save game data to another device or access information related to game progress)
+-  Lab 6: I2C (I used I2C to communicate with an LCD display)
+#### Main function:
+- setup() :(Initializes essential components of the game, including configuring the display, creating the TileMap object for level management, and setting variables involved in game mechanics, such as movement speed or gravity. It configures the initialization of player state variables, the initial position of the player, and other aspects of game setup)
+- loop() :(The main loop that runs continuously and handles interaction with button inputs and updates the game state. For example, it checks whether the player should move left/right or jump based on button inputs and gravity (determining vertical movement))
+- inputManager() :(One of the most important components of your game, which receives input from buttons. It checks whether the buttons are pressed or released and updates their states accordingly. It relies on reading input signals for player movement)
+- updatePlayerMovement() :(This feature updates the player's movement based on button inputs and game logic. Movement includes adjusting the player's position on the X axis for left/right movement, adjusting the Y axis for jumps, and checking for collisions on the map)
+- updateGameState() :(This function updates the game state, such as changing between GAME_INTRO, GAME_PLAY, and GAME_GAMEOVER, based on in-game events, such as losing a life or completing a level)
+-  resetPlayer(): (Depending on the game state, the resetPlayer function could be used to reposition the player when a new level or game starts, resetting the player's position, state, and animations)
+
 # Results
 # Conclusions
 
