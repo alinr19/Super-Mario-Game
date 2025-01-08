@@ -83,11 +83,12 @@ The external libraries are:
 - Adafruit_PCD8544.h (Provides support for controlling the Nokia 5110 PCD8544 LCD screen. This is a specialized library that allows the use of an LCD screen on Arduino platforms)
 The internal libraries are:
 -marduinotypes.h (A custom file that defines project-specific data types and structures, for example, BMP (the data type for bitmap tiles) and coordinate-related structures and map arrays)
+
 The marduinotypes.h file contains:
--tilesetbitmap.h (In this file, several bitmap arrays are declared and initialized, which visually represent the tiles used for various visual elements in the game (for example, one image for each tile))
--tilemap.h (Here the TileMap class is defined, which contains functions for manipulating the map and tile sizes, and within this class are functionalities to calculate the positions of each tile and to actually draw the tiles on the screen)
--tilemap.cpp (This file implements the methods that allow setting the map dimensions, drawing tiles on the screen (interaction with Adafruit_PCD8544 to draw each tile))
--levels.h (This file defines various data sets that describe maps and collision maps (CollisionMap). The map is structured by a set of tiles, and the TileMap0[] function effectively represents the tiles that make up the map of a particular level in the game)
+- tilesetbitmap.h (In this file, several bitmap arrays are declared and initialized, which visually represent the tiles used for various visual elements in the game (for example, one image for each tile))
+- tilemap.h (Here the TileMap class is defined, which contains functions for manipulating the map and tile sizes, and within this class are functionalities to calculate the positions of each tile and to actually draw the tiles on the screen)
+- tilemap.cpp (This file implements the methods that allow setting the map dimensions, drawing tiles on the screen (interaction with Adafruit_PCD8544 to draw each tile))
+- levels.h (This file defines various data sets that describe maps and collision maps (CollisionMap). The map is structured by a set of tiles, and the TileMap0[] function effectively represents the tiles that make up the map of a particular level in the game)
 
 #### Functionalities from labs to game :
 - Lab 0: GPIO for detecting button inputs (The buttons in the game are read as digital inputs from configurable pins. I used the digitalRead() function to detect the state of the buttons and use them as input for various in-game actions (movement, jump))
@@ -102,6 +103,50 @@ The marduinotypes.h file contains:
 - updateGameState() :(This function updates the game state, such as changing between GAME_INTRO, GAME_PLAY, and GAME_GAMEOVER, based on in-game events, such as losing a life or completing a level)
 -  resetPlayer(): (Depending on the game state, the resetPlayer function could be used to reposition the player when a new level or game starts, resetting the player's position, state, and animations)
 
+#### Global Variables:
+- gamestate: Defines the current state of the game, such as the start of the game, the level in progress, and the end of the game. This is a crucial parameter to know whether to run gameplay, display the menu, or manage other game states.
+             Example: gamestate = GAME_PLAY; (setting the game state to "Game in Progress")
+
+- player_state: Stores the current state of the player, which can be from still (P_STILL) to moving (P_MOVE) or dead (P_DEAD). This is used to change the player's behavior, such as jumping or moving.
+             Example: player_state = P_MOVE; (setting the player state to move)
+
+- last_direction: Stores the last direction the player was moving (usually 1 for right or -1 for left). This variable is useful for managing directions in the game.
+            Example: last_direction = 1; (sets the player's direction to the right)
+ 
+- life:
+Stores the player's number of lives. It is decremented when the player dies and is used to determine when the game is over
+          Example: life = 3; (the player starts with 3 lives)
+
+- player_position:Defines the player's position on the screen, both on the X and Y axes. It is essential for updating the player's movement during the game
+Example: Vector2f player_position(0, display.height() - pimageh - 8); (places the player at the bottom of the screen)
+
+- hspd:The player's horizontal speed, which controls their movement on the X axis. This can be adjusted to control how fast the player moves
+Example: hspd = 3.0; (setting the player's horizontal speed)
+
+- grav:The gravity value that influences the player's vertical movement, especially when jumping or in the air
+Example: grav = 0.6; (setting gravity to a moderate value)
+
+- vspd:The player's vertical speed. This is influenced by gravity and the player's jumping actions
+Example: vspd = 0; (initially the player does not move vertically)
+
+- frameMax: The maximum number of frames in an animation cycle. This is used to limit the number of frames and record animation sequences
+Example: frameMax = 4; (setting the maximum number of frames in the animation)
+
+- frameCounter: The frame counter that is used to manage the animation speed and frame changes.
+Example: frameCounter = 0; (initializing the frame counter to 0)
+
+- camera: Represents the camera position, which affects the perspective of the game. This is used to track the player's movements on the screen
+- Example: Vector2f camera = {0, 0}; (initial camera position at 0)
+  
+- buttonPressing, buttonRelease, buttonPressed: These variables are used to track the state of buttons. buttonPressing indicates whether a button is pressed, buttonRelease indicates whether the button has been released, and buttonPressed handles whether a button has already been pressed
+Example: buttonPressing[0] = true; (indicates that the first button is pressed)
+
+- last_camera: It is used to compare the last known camera position, to detect significant changes in perspective.
+Example: last_camera = camera; (save the last camera position for later comparisons).
+
 # Results
+Video with finished software and hardware :
+
 # Conclusions
+In conclusion, thanks to this project, this game that marked my childhood, I realized that I can do much more and that I can gradually learn more. I remembered what I did in the labs, I deepened the information, I can even say that this project helped me develop my skills.
 
