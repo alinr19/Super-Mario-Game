@@ -62,8 +62,8 @@ To run mario back ward place in pin 5 with button 1 , to jump/select or enter th
 
 #### Circuit Diagrams:
 
-![display](https://github.com/user-attachments/assets/dec8b44e-828a-4d99-b6eb-3aecba8370df)
-![buttons](https://github.com/user-attachments/assets/a4f05286-754d-428d-ad4e-ef2534adc104)
+![image](https://github.com/user-attachments/assets/fa2e3863-6335-4937-bd83-7e8194711dfb)
+![image](https://github.com/user-attachments/assets/4628c57d-6139-4f5a-b607-67a4e30badb1)
 
 #### Block Diagram:
 ![robotica](https://github.com/user-attachments/assets/6a9a0b14-d236-41cb-8d80-8f037492506b)
