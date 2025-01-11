@@ -145,7 +145,7 @@ Example: buttonPressing[0] = true; (indicates that the first button is pressed)
 Example: last_camera = camera; (save the last camera position for later comparisons).
 
 # Results
-Video with finished software and hardware :
+Video with finished software and hardware : https://www.youtube.com/watch?v=ImC_x5TphGQ
 
 # Conclusions
 In conclusion, thanks to this project, this game that marked my childhood, I realized that I can do much more and that I can gradually learn more. I remembered what I did in the labs, I deepened the information, I can even say that this project helped me develop my skills.
